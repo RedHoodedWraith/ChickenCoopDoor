@@ -8,7 +8,7 @@ Last Modified 27 June 2016
 
 Servo servo;
 
-pos = 0; //  The servo's position (starting at 0)
+int pos = 0; /*  The servo's position (starting at 0)*/
 
 void setup ()  {
   Serial.begin(9600);
@@ -21,6 +21,7 @@ void loop  ()  {
   int lightSensor = analogRead(A0);
   int light = 1023 - lightSensor;
   
+  Serial.println(light);
   
   //  Opening the door
   if((light)>512)  {
