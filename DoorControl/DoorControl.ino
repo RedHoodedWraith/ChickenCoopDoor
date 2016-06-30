@@ -1,7 +1,7 @@
 /* Light Controlled Door Management Code
 by Rowan Rathod
 
-Last Modified 27 June 2016
+Last Modified 30 June 2016
 */
 
 #include <Servo.h>
@@ -25,31 +25,34 @@ void loop  ()  {
   Serial.println(light);
   
   //  Opening the door
-  if  (((light)>512) && ((door)==0))  {
+  if  (((light)>512) && ((door)==0))  {   // If light is above threshold and door is has "closed" status, then open the door.
+  
     for(pos = 0; pos <= 180; pos += 5)  //  Open (move in steps of 5)   - Adjust middle value (180)!
       {
         servo.write(pos);
         delay(15);
         
-        if((pos) == 180)  {
-          door = 1;  //  Door Status is Open
+        if((pos) == 180)  {  // If servo is at "open" position
+          door = 1;  //  Make Door Status Open
         }
       }
+      
   }
   
   //  Closing the door
-  if  (((light)<512) && ((door)==1))  {
+  if  (((light)<512) && ((door)==1))  {  // If light is below threshold and door is has "open" status, then close the door.
+  
       for(pos = 180; pos >= 0; pos -= 5)  //  Close (move in steps of 5)   - Adjust middle value (180)!
       {
         servo.write(pos);
         delay(15);
         
-        if((pos) == 0)  {
-          door = 0;  //  Door Status is Closed
+        if((pos) == 0)  {  // If servo is at "close" position
+          door = 0;  //  Make Door Status Closed
         }
       }
+      
   }
-  
 }
 
 
