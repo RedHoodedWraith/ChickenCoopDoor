@@ -47,12 +47,14 @@ void loop  ()  {
         servo.write(pos);
         delay(15);
         
-        if((pos) == 0)  {  // If servo is at "close" position
+        if((pos) == 90)  {  // If servo is at "close" position
           door = 0;  //  Make Door Status Closed
         }
       }
       
   }
+  
+ delay(1000);
 }
 
 
