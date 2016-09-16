@@ -27,32 +27,28 @@ void loop  ()  {
   //  Opening the door
   if  (((light)>512) && ((door)==0))  {   // If light is above threshold and door is has "closed" status, then open the door.
   
-    for(pos = 0; pos <= 180; pos += 5)  //  Open (move in steps of 5)   - Adjust middle value (180)!
-      {
-        servo.write(pos);
-        delay(15);
+    myservo.write(45);
         
-        if((pos) == 180)  {  // If servo is at "open" position
+        if(() == )  {  // If servo is at "open" position
           door = 1;  //  Make Door Status Open
         }
       }
       
-  }
+  
   
   //  Closing the door
   if  (((light)<512) && ((door)==1))  {  // If light is below threshold and door is has "open" status, then close the door.
   
-      for(pos = 180; pos >= 0; pos -= 5)  //  Close (move in steps of 5)   - Adjust middle value (180)!
-      {
-        servo.write(pos);
-        delay(15);
+    myservo.write(135);
         
-        if((pos) == 0)  {  // If servo is at "close" position
+        if((pos) == 90)  {  // If servo is at "close" position
           door = 0;  //  Make Door Status Closed
         }
-      }
+      
       
   }
+  
+ delay(1000);
 }
 
 
