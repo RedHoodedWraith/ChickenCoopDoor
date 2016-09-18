@@ -48,7 +48,7 @@ void loop  ()  {
  */
   
   //  Opening the door
-  if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door is has "closed" status, then open the door.
+  if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
    servo.write(45); //Servo spins Anticlockwise to open the door
@@ -56,7 +56,7 @@ void loop  ()  {
   }
   
   //  Closing the door
-  if  ( ( (light)<512) && ( (door)==1) )  {  // If light is below threshold and door is has "open" status, then close the door.
+  if  ( ( (light)<512) && ( (door)==1) )  {  // If light is below threshold and door has "open" status, then close the door.
 
    Serial.println("Operation: Closing");
    servo.write(135); //Servo spins Clockwise to close the door
