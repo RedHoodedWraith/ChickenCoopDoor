@@ -1,9 +1,7 @@
 /* Light Controlled Door Management Code
 by Rowan Rathod
 
-ROWAN IS AWESOME!!!
-
-Last Modified 16 September 2016
+Last Modified 19 September 2016
 */
 
 const int leftclose = 13;
