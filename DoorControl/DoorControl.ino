@@ -18,9 +18,9 @@ int door;
 
 void setup ()  {
   Serial.begin(9600);
-  /*pinMode(leftclose, INPUT);
-  pinMode(rightopen, INPUT);*/
-  
+  pinMode(leftclose, INPUT);
+  pinMode(rightopen, INPUT);
+ 
   servo.attach(9); // The servo is attached at Digital Pin 9
 }
 
@@ -29,23 +29,24 @@ void loop  ()  {
   int lightSensor = analogRead(A0);
   int light = 1023 - lightSensor;
 
-/*  int open = digitalRead(rightopen);
-  int close = digitalRead(leftclose); */
+  int open = digitalRead(rightopen);
+  int close = digitalRead(leftclose); 
+
 
   Serial.print("Door Status: ");
   Serial.println(door);
   Serial.print("Light Readings: ");
   Serial.println(light);
 
-/*//  Door Statuses
-   if((open) == HIGH)  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
+ //  Door Statuses
+   if  ( ((open) == HIGH) && ((close) == LOW) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
           door = 1;  //  Make Door Status Open
         }
 
-   if((close) == HIGH)  {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
+   if  (  ((close) == HIGH) && ((open) == LOW) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
           door = 0;  //  Make Door Status Close
         }
- */
+ 
   
   //  Opening the door
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
