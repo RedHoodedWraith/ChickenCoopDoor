@@ -30,6 +30,10 @@ void loop  ()  {
   int open = digitalRead(rightopen);
   int close = digitalRead(leftclose); 
 
+  Serial.print("Left Sensor: ");
+  Serial.println(leftclose);
+  Serial.print("Right Sensor: ");
+  Serial.println(rightopen);
 
   Serial.print("Door Status: ");
   Serial.println(door);
