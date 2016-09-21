@@ -4,8 +4,8 @@ by Rowan Rathod
 Last Modified 19 September 2016
 */
 
-const int leftclose = 13;
-const int rightopen = 12;
+const int leftclose = 3;
+const int rightopen = 2;
 
 #include <Servo.h>
 
@@ -24,15 +24,15 @@ void setup ()  {
 
 void loop  ()  {
   //  Minor Setup
-  int lightSensor = analogRead(A0);
+  int lightSensor = analogRead(A5);
   int light = 1023 - lightSensor;
 
   int open = digitalRead(rightopen);
   int close = digitalRead(leftclose); 
 
-  Serial.print("Left Sensor: ");
+  Serial.print("Closed Door Detection: ");
   Serial.println(close);
-  Serial.print("Right Sensor: ");
+  Serial.print("Open Door Detection: ");
   Serial.println(open);
 
   Serial.print("Door Status: ");
@@ -54,7 +54,7 @@ void loop  ()  {
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
-   servo.write(45); //Servo spins Anticlockwise to open the door
+   servo.write(80); //Servo spins Anticlockwise to open the door
    
   }
   
@@ -62,7 +62,7 @@ void loop  ()  {
   if  ( ( (light)<512) && ( (door)==1) )  {  // If light is below threshold and door has "open" status, then close the door.
 
    Serial.println("Operation: Closing");
-   servo.write(135); //Servo spins Clockwise to close the door
+   servo.write(100); //Servo spins Clockwise to close the door
       
   }
 
