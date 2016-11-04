@@ -4,8 +4,8 @@ by Rowan Rathod
 Last Modified 17 October 2016
 */
 
-const int leftclose = 0;  //Yellow Square Button
-const int rightopen = 1;  //Grey Cirle Button
+const int leftclose = 1;  //Yellow Square Button
+const int rightopen = 0;  //Grey Cirle Button
 
 #include <Servo.h>
 
@@ -52,7 +52,7 @@ void loop  ()  {
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
-   servo.write(70); //Servo spins Anticlockwise to open the door
+   servo.write(30); //Servo spins Anticlockwise to open the door
    
   }
   
