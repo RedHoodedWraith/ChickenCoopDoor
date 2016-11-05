@@ -4,8 +4,8 @@ by Rowan Rathod
 Last Modified 17 October 2016
 */
 
-const int leftclose = 0;  //Yellow Square Button
-const int rightopen = 1;  //Grey Cirle Button
+const int leftclose = 1;  //Yellow Square Button
+const int rightopen = 0;  //Grey Cirle Button
 
 #include <Servo.h>
 
@@ -39,11 +39,11 @@ void loop  ()  {
   Serial.println(light);
 
  //  Door Statuses
-   if  ( ((open) == 0) && ((close) > 0) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
+   if  ( ((open) == 0) && ((close) > 10) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
           door = 1;  //  Make Door Status Open
         }
 
-   if  (  ((close) == 0) && ((open) > 0) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
+   if  (  ((close) == 0) && ((open) > 10) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
           door = 0;  //  Make Door Status Close
         }
  
@@ -52,7 +52,7 @@ void loop  ()  {
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
-   servo.write(70); //Servo spins Anticlockwise to open the door
+   servo.write(75); //Servo spins Anticlockwise to open the door
    
   }
   
