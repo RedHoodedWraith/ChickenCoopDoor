@@ -1,7 +1,7 @@
 /* Light Controlled Door Management Code
 by Rowan Rathod
 
-Last Modified 17 October 2016
+Last Modified 5 November 2016
 */
 
 const int leftclose = 1;  //Yellow Square Button
