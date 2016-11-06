@@ -1,7 +1,7 @@
 /* Light Controlled Door Management Code
 by Rowan Rathod
 
-Last Modified 5 November 2016
+Last Modified 11 November 2016
 */
 
 const int leftclose = 1;  //Yellow Square Button
@@ -39,11 +39,11 @@ void loop  ()  {
   Serial.println(light);
 
  //  Door Statuses
-   if  ( ((open) == 0) && ((close) > 10) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
+   if  ( ((open) < 10) && ((close) > 10) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
           door = 1;  //  Make Door Status Open
         }
 
-   if  (  ((close) == 0) && ((open) > 10) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
+   if  (  ((close) < 10) && ((open) > 10) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
           door = 0;  //  Make Door Status Close
         }
  
@@ -52,11 +52,8 @@ void loop  ()  {
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
-<<<<<<< HEAD
    servo.write(30); //Servo spins Anticlockwise to open the door
-=======
-   servo.write(75); //Servo spins Anticlockwise to open the door
->>>>>>> origin/Development2
+
    
   }
   
