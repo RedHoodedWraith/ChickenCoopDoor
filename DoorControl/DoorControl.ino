@@ -1,13 +1,11 @@
 /* Light Controlled Door Management Code
 by Rowan Rathod
 
-ROWAN IS AWESOME!!!
-
-Last Modified 16 September 2016
+Last Modified 5 November 2016
 */
 
-const int leftclose = 13;
-const int rightopen = 12;
+const int leftclose = 1;  //Yellow Square Button
+const int rightopen = 0;  //Grey Cirle Button
 
 #include <Servo.h>
 
@@ -18,40 +16,47 @@ int door;
 
 void setup ()  {
   Serial.begin(9600);
-  /*pinMode(leftclose, INPUT);
-  pinMode(rightopen, INPUT);*/
-  
+ 
   servo.attach(9); // The servo is attached at Digital Pin 9
 }
 
 void loop  ()  {
   //  Minor Setup
-  int lightSensor = analogRead(A0);
+  int lightSensor = analogRead(A5);
   int light = 1023 - lightSensor;
 
-/*  int open = digitalRead(rightopen);
-  int close = digitalRead(leftclose); */
+  int open = analogRead(rightopen);
+  int close = analogRead(leftclose); 
+
+  Serial.print("Closed Door Detection: ");
+  Serial.println(close);
+  Serial.print("Open Door Detection: ");
+  Serial.println(open);
 
   Serial.print("Door Status: ");
   Serial.println(door);
   Serial.print("Light Readings: ");
   Serial.println(light);
 
-/*//  Door Statuses
-   if((open) == HIGH)  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
+ //  Door Statuses
+   if  ( ((open) == 0) && ((close) > 10) )  {  // If door button is at "open" position because it is PUSHING THE OPEN BUTTON
           door = 1;  //  Make Door Status Open
         }
 
-   if((close) == HIGH)  {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
+   if  (  ((close) == 0) && ((open) > 10) ) {  // If door button is at "closed" position because it is PUSHING THE CLOSE BUTTON
           door = 0;  //  Make Door Status Close
         }
- */
+ 
   
   //  Opening the door
   if  ( ( (light)>512) && ( (door)==0) )  {   // If light is above threshold and door has "closed" status, then open the door.
 
    Serial.println("Operation: Opening");
-   servo.write(45); //Servo spins Anticlockwise to open the door
+<<<<<<< HEAD
+   servo.write(30); //Servo spins Anticlockwise to open the door
+=======
+   servo.write(75); //Servo spins Anticlockwise to open the door
+>>>>>>> origin/Development2
    
   }
   
@@ -59,7 +64,7 @@ void loop  ()  {
   if  ( ( (light)<512) && ( (door)==1) )  {  // If light is below threshold and door has "open" status, then close the door.
 
    Serial.println("Operation: Closing");
-   servo.write(135); //Servo spins Clockwise to close the door
+   servo.write(100); //Servo spins Clockwise to close the door
       
   }
 
